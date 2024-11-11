@@ -65,13 +65,6 @@ from sklearn.metrics import accuracy_score
 # Split your dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Using the custom model
-from logistic_regression import LogisticRegressionCustom
-custom_model = LogisticRegressionCustom(learning_rate=0.01, num_iterations=1000)
-custom_model.fit(X_train, y_train)
-custom_predictions = custom_model.predict(X_test)
-print("Custom Model Accuracy:", accuracy_score(y_test, custom_predictions))
-
 # Using the scikit-learn model
 from sklearn.linear_model import LogisticRegression
 sklearn_model = LogisticRegression()
