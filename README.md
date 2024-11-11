@@ -8,6 +8,7 @@ Welcome to the Logistic Regression project! This repository provides an in-depth
 3. [Implementation](#implementation)
 5. [Model Training](#model-training)
 6. [Evaluation Metrics](#evaluation-metrics)
+7. [Example Workflow](#example-workflow)
 
 ## Introduction
 Logistic regression is a type of regression analysis often used for binary classification tasks. It estimates the probability of a binary response based on one or more predictor variables, making it useful for applications such as fraud detection, medical diagnoses, and marketing.
@@ -51,3 +52,29 @@ The project includes:
 - **Recall**: Correct positive predictions divided by actual positives.
 - **F1-Score**: Harmonic mean of precision and recall.
 
+## Example Workflow
+
+Here’s an example workflow to illustrate a typical use case:
+
+```python
+# Import libraries
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Split your dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Using the custom model
+from logistic_regression import LogisticRegressionCustom
+custom_model = LogisticRegressionCustom(learning_rate=0.01, num_iterations=1000)
+custom_model.fit(X_train, y_train)
+custom_predictions = custom_model.predict(X_test)
+print("Custom Model Accuracy:", accuracy_score(y_test, custom_predictions))
+
+# Using the scikit-learn model
+from sklearn.linear_model import LogisticRegression
+sklearn_model = LogisticRegression()
+sklearn_model.fit(X_train, y_train)
+sklearn_predictions = sklearn_model.predict(X_test)
+print("Scikit-learn Model Accuracy:", accuracy_score(y_test, sklearn_predictions))
